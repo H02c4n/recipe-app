@@ -50,8 +50,8 @@ const handleSubmit = (e)=>{
   
   return (
     <Container>
-            <div style={{opacity:.8}} className={register ? "col-md-4 offset-4 card card-primary p-3 border border-success border-3" : "col-md-4 offset-4 card card-primary p-3 border border-primary border-3"}>
-                <h3 className={register ? "text-center text-success mb-3 mt-3": "text-center text-primary mb-3 mt-3"}>|| Recipe ||</h3>
+            <div style={{opacity:.8}} className={register ? "col-md-4 offset-4 card card-primary p-3 border colorfirst border-3" : "col-md-4 offset-4 card card-primary p-3 border colorsecond border-3"}>
+                <h3 className={register ? "text-center colorfirst mb-3 mt-3": "text-center colorsecond mb-3 mt-3"}>|| Recipe ||</h3>
                 <hr/>
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">
@@ -73,7 +73,7 @@ const handleSubmit = (e)=>{
                     </div>
                     <div className="button-container d-flex  flex-column align-items-center">
                         <button type="submit" 
-                                className={register ? "btn btn-success btn-block mb-2 mt-2" : "btn btn-primary btn-block mb-2 mt-2"}>
+                                className={register ? "btn bgcolorfirst btn-block mb-2 mt-2 text-white" : "btn bgcolorsecond btn-block mb-2 mt-2 text-white"}>
                                   {register ? "Register" : "Login"}
                         </button>
                         <Link onClick={handleClick} to="">{register ? "I have an account" : "Don't have an account?"}</Link>
