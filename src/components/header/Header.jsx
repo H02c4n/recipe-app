@@ -1,9 +1,10 @@
 import React from 'react'
+import Form from './Form'
 
-const Header = () => {
+const Header = ({handleSubmit}) => {
   return (
-    <div>
-      Header
+    <div className='mb-3'>
+      <Form handleSubmit={handleSubmit} />
     </div>
   )
 }

@@ -1,39 +1,82 @@
 import React, { useState } from 'react'
 import { Container } from './Login.styled'
+import { Link, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import alertify from "alertifyjs";
+const Login = ({isUser, changeUser}) => {
 
-const Login = ({isUser}) => {
+const[register, setRegister] = useState(false);
+const[formData, setFormData] = useState({
+  email:"",
+  password:""
+});
+const[currentUser, setCurrentUser] = useState({});
 
-const[register, setRegister] = useState(true);
+const navigate = useNavigate();
 
+useEffect(()=>{
+  setCurrentUser(JSON.parse(localStorage.getItem("user")));
+},[])
 
 const handleClick = (e) => {
   e.preventDefault();
   setRegister(!register);
 }
 
+const handleChange = (e)=>{
+  const{name, value} = e.target;
+  setFormData(prevFormData => {
+    return{
+      ...prevFormData,
+      [name]:value
+    }
+  })
+} 
 
-  console.log(isUser);
+const handleSubmit = (e)=>{
+  e.preventDefault();
+  if (register) {
+    localStorage.setItem("user", JSON.stringify(formData));
+    alertify.success('Account is created');
+  }else if (!register) {
+    if (formData.email === currentUser.email && formData.password === currentUser.password) {
+       changeUser();
+       navigate("/");
+    }
+  }
+}
+
+  //console.log(register, isUser, formData, currentUser);
+  
   return (
     <Container>
             <div style={{opacity:.8}} className={register ? "col-md-4 offset-4 card card-primary p-3 border border-success border-3" : "col-md-4 offset-4 card card-primary p-3 border border-primary border-3"}>
-                <h3 className={register ? "text-center text-success mb-3 mt-3": "text-center text-primary mb-3 mt-3"}>|| Haoz ||</h3>
+                <h3 className={register ? "text-center text-success mb-3 mt-3": "text-center text-primary mb-3 mt-3"}>|| Recipe ||</h3>
                 <hr/>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <div className="form-group">
                         <label>Your e-mail address</label>
-                        <input type="email" className="form-control"
+                        <input type="email" 
+                        name='email'
+                        value={formData.email}
+                        onChange={handleChange}
+                        className="form-control"
                                placeholder="Enter your email address..."/>
                     </div>
                     <div className="form-group">
                         <label>Password</label>
-                        <input type="password" className="form-control" placeholder="Enter your password..."/>
+                        <input type="password" 
+                        name='password'
+                        value={formData.password}
+                        onChange={handleChange}
+                        className="form-control" placeholder="Enter your password..."/>
                     </div>
                     <div className="button-container d-flex  flex-column align-items-center">
                         <button type="submit" 
                                 className={register ? "btn btn-success btn-block mb-2 mt-2" : "btn btn-primary btn-block mb-2 mt-2"}>
                                   {register ? "Register" : "Login"}
                         </button>
-                        <a onClick={handleClick} href="#">{register ? "I have an account" : "Don't have an account?"}</a>
+                        <Link onClick={handleClick} to="">{register ? "I have an account" : "Don't have an account?"}</Link>
                     </div>
                 </form>
                 

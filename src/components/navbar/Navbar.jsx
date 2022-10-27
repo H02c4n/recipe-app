@@ -8,7 +8,7 @@ const linkStyle = {
     textDecoration:"none",
     }
 
-const Navbar = ({isUser}) => {
+const Navbar = ({isUser, logout}) => {
   return (
     
     <Nav>
@@ -26,9 +26,12 @@ const Navbar = ({isUser}) => {
                 <Link className='navlink' style={linkStyle} to="/about">About</Link>
             </Li></> : ""}
 
-            <Li>
+            {isUser ? <Li>
+                <Link onClick={logout} className='navlink' style={linkStyle} to="/login">Logout</Link>
+            </Li> : <Li>
                 <Link className='navlink' style={linkStyle} to="/login">Login</Link>
-            </Li>
+            </Li>}
+            
         </Ul>
        </Div>
     </Nav>
