@@ -5,7 +5,7 @@ import Home from "../pages/home/Home";
 import About from "../pages/about/About";
 import Details from "../pages/details/Details";
 import Login from "../pages/login/Login";
-import NotFound from "../pages/notFound/NotFound";
+//import NotFound from "../pages/notFound/NotFound";
 
 const AppRouter = ({ isUser, changeUSer }) => {
   return (

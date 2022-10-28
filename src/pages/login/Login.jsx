@@ -51,7 +51,7 @@ const handleSubmit = (e)=>{
   return (
     <Container>
             <div style={{opacity:.78}} className={register ? "col-md-3 card card-primary p-3 border colorfirst border-3" : "col-md-3 card card-primary p-3 border colorsecond border-3"}>
-                <h3 className={register ? "text-center colorfirst mb-3 mt-3": "text-center colorsecond mb-3 mt-3"}>|| Recipe ||</h3>
+                <h3 className={register ? "text-center colorfirst mb-3 mt-3": "text-center colorsecond mb-3 mt-3"}>|| Recipe App ||</h3>
                 <hr/>
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">

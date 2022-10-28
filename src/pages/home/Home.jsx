@@ -8,7 +8,6 @@ import RecipeCard from './RecipeCard';
 import svg from "../../assets/images/meal2.svg"
 
 const Home = () => {
-
 const[data, setData] = useState([]);
 
 
@@ -17,12 +16,23 @@ const[data, setData] = useState([]);
     
   },[])
 
-  console.log(data);
+  //console.log(data);
+    const apiKey = process.env.REACT_APP_API_KEY;
+    const apiId = process.env.REACT_APP_API_ID;
 
+    console.log(apiKey, apiId)
   const handleSubmit = (data, e)=>{
     e.preventDefault();
-    const url = `https://api.edamam.com/search?q=${data.search}&app_id=9686df3b&app_key=b32e29841756a03f4bece2340692d627&mealType=${data.meal}`;
-    axios(url).then(res => setData(res.data.hits));
+    
+    const url = `https://api.edamam.com/search?q=${data.search}&app_id=${apiId}&app_key=${apiKey}&mealType=${data.meal}`;
+    try {
+      axios(url).then(res => setData(res.data.hits));
+    } catch (error) {
+      if (error) {
+        console.log(error);
+      }
+    }
+    
   }
 
 
