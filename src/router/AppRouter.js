@@ -25,7 +25,6 @@ const AppRouter = ({ isUser, changeUSer }) => {
         path="/login"
         element={<Login isUser={isUser} changeUser={changeUSer} />}
       />
-      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };
@@ -33,6 +32,6 @@ const AppRouter = ({ isUser, changeUSer }) => {
 export default AppRouter;
 
 /*
-
+<Route path="*" element={<NotFound />} />
 
 */

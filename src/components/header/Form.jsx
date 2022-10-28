@@ -27,6 +27,7 @@ const Form = ({handleSubmit}) => {
       <input className='form-control' type="text" name='search' value={formData.search} onChange={handleChange} />
       <button className='btn btn-md btn-success'>Search</button>
       <select name="meal" className='form-control' value={formData.meal} onChange={handleChange}>
+        <option selected>--Choose--</option>
         <option value="breakfast">Breakfast</option>
         <option value="dinner">Dinner</option>
         <option value="lunch">Lunch</option>

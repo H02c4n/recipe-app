@@ -5,6 +5,7 @@ import Header from "../../components/header/Header";
 import { Container } from './Home.styled';
 import axios from 'axios';
 import RecipeCard from './RecipeCard';
+import svg from "../../assets/images/meal2.svg"
 
 const Home = () => {
 
@@ -27,7 +28,8 @@ const[data, setData] = useState([]);
 
   return (
     <Container>
-       <h2 className='h1 text-secondary'>EAT(M)EAT</h2>
+      <img src={svg} alt="" width="200px" />
+       {/* <h2 className='h1 text-secondary'>EAT(M)EAT</h2> */}
        <Header handleSubmit={handleSubmit} />
        <RecipeCard data={data} />
     </Container>
